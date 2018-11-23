@@ -1,5 +1,8 @@
 FROM webdevops/php-nginx:7.2
 
+# Install parallel composer
+RUN su - application -c "composer global require hirak/prestissimo"
+
 # PHP settings
 ENV PHP_DATE_TIMEZONE Europe/Amsterdam
 

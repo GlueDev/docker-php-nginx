@@ -1,7 +1,11 @@
 FROM webdevops/php-nginx:7.2
 
+# PHP dependencies
+RUN pecl install opencensus-alpha
+RUN docker-php-ext-enable opencensus
+
 # Install parallel composer
-RUN su - application -c "composer global require hirak/prestissimo"
+RUN composer global require hirak/prestissimo
 
 # PHP settings
 ENV PHP_DATE_TIMEZONE Europe/Amsterdam

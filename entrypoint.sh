@@ -1,7 +1,7 @@
  #!/bin/bash
 
 if [[ "$ENABLE_BATCH_DAEMON" = true ]]; then
-    cp /opt/glue/batch-daemon.conf /opt/docker/etc/supervisor.d/batch-daemon.conf
+    cp /opt/glue/google-batch-daemon.conf /opt/docker/etc/supervisor.d/google-batch-daemon.conf
 fi
 
 if [[ "$ENABLE_LARAVEL_NGINX" = true ]]; then
@@ -13,5 +13,7 @@ if [[ "$ENABLE_LARAVEL_HORIZON" = true ]]; then
 fi
 
 if [[ "$ENABLE_COMPOSER" = true ]]; then
-    su - application -c "cd $WEB_DOCUMENT_ROOT && composer install"
+    #su -p -l application -c "cd $WEB_DOCUMENT_ROOT && printenv && composer install --no-interaction"
+    composer install --working-dir=$WEB_DOCUMENT_ROOT
+    chown -R application: $WEB_DOCUMENT_ROOT/vendor
 fi

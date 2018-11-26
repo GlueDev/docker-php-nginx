@@ -13,5 +13,5 @@ if [[ "$ENABLE_LARAVEL_HORIZON" = true ]]; then
 fi
 
 if [[ "$ENABLE_COMPOSER" = true ]]; then
-    su - application -c "cd $WEB_DOCUMENT_ROOT && composer install"
+    su application -c "cd $WEB_DOCUMENT_ROOT && composer install"
 fi

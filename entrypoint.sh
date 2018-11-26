@@ -1,7 +1,7 @@
  #!/bin/bash
 
 if [[ "$ENABLE_BATCH_DAEMON" = true ]]; then
-    cp /opt/glue/batch-daemon.conf /opt/docker/etc/supervisor.d/batch-daemon.conf
+    cp /opt/glue/google-batch-daemon.conf /opt/docker/etc/supervisor.d/google-batch-daemon.conf
 fi
 
 if [[ "$ENABLE_LARAVEL_NGINX" = true ]]; then

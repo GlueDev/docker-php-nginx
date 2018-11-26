@@ -1,8 +1,6 @@
 FROM webdevops/php-nginx:7.2
 
-# Install dependencies
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install autoconf gcc make
+# Install Google tracing dependencies
 RUN pecl install opencensus-alpha
 RUN docker-php-ext-enable opencensus
 

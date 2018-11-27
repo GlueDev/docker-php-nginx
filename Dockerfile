@@ -12,9 +12,11 @@ ENV PHP_DATE_TIMEZONE Europe/Amsterdam
 
 # Glue ENV variables
 ENV ENABLE_BATCH_DAEMON false
-ENV ENABLE_COMPOSER true
+ENV ENABLE_COMPOSER false
 ENV ENABLE_LARAVEL_HORIZON false
 ENV ENABLE_LARAVEL_NGINX true
+ENV RUN_CLEAR_CACHES true
+ENV RUN_MIGRATIONS true
 
 # Glue config & entrypoint
 COPY ./config /opt/glue/

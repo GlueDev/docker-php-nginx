@@ -13,5 +13,13 @@ if [[ "$ENABLE_LARAVEL_HORIZON" = true ]]; then
 fi
 
 if [[ "$ENABLE_COMPOSER" = true ]]; then
-    su application -c "cd $WEB_DOCUMENT_ROOT && composer install"
+    su application -c "cd $WEB_DOCUMENT_ROOT && composer install --no-interaction"
+fi
+
+if [[ "$RUN_CLEAR_CACHES" = true ]]; then
+    su application -c "cd $WEB_DOCUMENT_ROOT && php artisan config:clear --no-interaction && php artisan cache:clear --no-interaction"
+fi
+
+if [[ "$RUN_MIGRATIONS" = true ]]; then
+    su application -c "cd $WEB_DOCUMENT_ROOT && php artisan migrate --force --no-interaction"
 fi

@@ -1,8 +1,12 @@
 FROM webdevops/php-nginx:7.2
 
+# Install apt dependencies
+RUN apt-get update && apt-get install vim htop libz-dev -y
+
 # Install Google tracing dependencies
-RUN pecl install opencensus-alpha
-RUN docker-php-ext-enable opencensus
+RUN pecl channel-update pecl.php.net
+RUN pecl install opencensus-alpha grpc protobuf
+RUN docker-php-ext-enable opencensus grpc protobuf
 
 # Install parallel composer
 RUN su application -c "composer global require hirak/prestissimo"
